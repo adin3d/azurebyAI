@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Blocking Extension",
+  "description": "Blocks URLs containing specified strings.",
+  "version": "1.0",
+  "options_ui": {
+    "page": "options.html"
+  },
+  "permissions": [
+    "webNavigation",
+    "cookies",
+    "storage"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png"
+  }
+}
