@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blocking Extension Options</title>
+</head>
+<body>
+  <h1>Blocking Extension Options</h1>
+  <p>Enter the strings to block, one per line:</p>
+  <textarea id="blocked-strings"></textarea>
+  <button id="save-button">Save</button>
+
+  <script>
+    // Get the list of blocked strings from storage
+    chrome.storage.sync.get({blockedStrings: []}, function(items) {
+      var blockedStrings = items.blockedStrings;
+
+      // Populate the textarea with the list of blocked strings
+      var blockedStringsTextarea = document.getElementById("blocked-strings");
+      blockedStringsTextarea.value = blockedStrings.join("\n");
+    });
+
+    // Add a listener to save the list of blocked strings when the user clicks the Save button
+    var saveButton = document.getElementById("save-button");
+    saveButton.addEventListener("click", function() {
+      // Get the list of blocked strings from the textarea
+      var blockedStringsTextarea = document.getElementById("blocked-strings");
+      var blockedStrings = blockedStringsTextarea.value.split("\n");
+
+      // Save the list of blocked strings to storage
+      chrome.storage.sync.set({blockedStrings: blockedStrings});
+
+      // Close the options page
+      window.close();
+    });
+  </script>
+</body>
+</html>
