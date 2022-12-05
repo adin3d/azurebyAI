@@ -1,0 +1,10 @@
+// manifest.json
+{
+  "manifest_version": 2,
+  "name": "Delete History URLs",
+  "version": "1.0",
+  "permissions": ["history"],
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
